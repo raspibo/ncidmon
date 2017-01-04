@@ -58,6 +58,7 @@ Show usage and exit.
 - developed with Python 2.7 (last version check returned 2.7.6)
 
 **TODO**
+
 - [ ] limit log entries output on console by configurable time span
 - [ ] restructure (file and folder hierarchy)
 - [x] command line options for NCID and HTTP server addresses
@@ -72,6 +73,7 @@ Show usage and exit.
 - [ ] connection timeout
 
 **INSTALLATION**
+
 If you want to use as daemon, put files under system dir es: /usr/ncidmon/
 
     cd /usr
@@ -84,11 +86,16 @@ add link to systemd startup daemons
     sudo systemctl start ncidmon.service
 
 **BLACKILIST AND WHITELIST UTILITY**
+
+Control blacklist and whitelist with 2 methods:
+
 *MANUAL BY WEB INTERFACE* 
+
 You can control call list on web interface and add a caller on black or white list files under ncidmon/ncidmon/var/plugins/. 
 These files are used to populate /etc/ncidd/ncidd.blacklist or /etc/ncidd/ncidd.whitelist
 
 *REPUTATION SCRIPTS*
+
 Under dir reputation ncidmon/ncidmon/var/plugins/reputation/  you can find some useful script to determine reputation of unknown caller. 
 Some of these use lxml library, install following instruction on library site http://lxml.de/
 
