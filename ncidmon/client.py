@@ -13,6 +13,9 @@ from .cidentry import CIDEntry
 from .notifications import notify_current_incoming_call, notify_recent_incoming_call
 from .misc import get_digits_count, dprint, CONFIG
 
+# used for caller reputation check
+import glob
+import subprocess
 
 class NCIDClientFactory(ReconnectingClientFactory):
     ''' NCID client factory with reconnect feature'''
@@ -180,7 +183,13 @@ class NCIDClient(LineReceiver):
                 # print on console
                 stars = '*' * self._index_width
                 print '(' + stars + ') ' + entry.get_pretty_summary()
-                
+                print 'Caller reputation check for ' + entry.get_pretty_number() + 'run scripts: ' +  str(glob.glob("reputation/*.py"))
+		for reputation_script in glob.glob("reputation/*.py") :
+			reputation=subprocess.call(["python", reputation_script , entry.get_pretty_number()])
+			print "Reputation out: " + str(reputation)
+			if int(reputation)==1 :
+				#subprocess.call("/usr/bin/ncidutil" , "/etc/ncid/ncidd.blacklist" , "Blacklist" ,"add" , entry.get_pretty_number() , "\#Auto update from reputation script")	
+				subprocess.call(["/home/pi/ncid_blacklist_add.sh" , entry.get_pretty_number() , "\#Auto update from reputation script"])	
                 # notify incoming call
                 notify_current_incoming_call(entry)
                 
