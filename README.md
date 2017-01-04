@@ -2,6 +2,7 @@ NCIDmon
 =======
 
 Basic NCID command line client written in Python 2
+This is a fork of https://github.com/shrick/ncidmon with some chenges for italian market.
 
 **SYNOPSIS**
 
@@ -70,4 +71,42 @@ Show usage and exit.
 - [ ] porting to Python 3
 - [ ] connection timeout
 
+**INSTALLATION**
+If you want to use as daemon, put files under system dir es: /usr/ncidmon/
 
+    cd /usr
+    git clone https://github.com/raspibo/ncidmon
+
+add link to systemd startup daemons
+
+    sudo ln -s /usr/ncidmon/ncidmon/ncidmon.service /lib/systemd/system/ncidmon.service
+    sudo systemctl enable ncidmon.service
+    sudo systemctl start ncidmon.service
+
+**BLACKILIST AND WHITELIST UTILITY**
+*MANUAL BY WEB INTERFACE* 
+You can control call list on web interface and add a caller on black or white list files under ncidmon/ncidmon/var/plugins/. 
+These files are used to populate /etc/ncidd/ncidd.blacklist or /etc/ncidd/ncidd.whitelist
+
+*REPUTATION SCRIPTS*
+Under dir reputation ncidmon/ncidmon/var/plugins/reputation/  you can find some useful script to determine reputation of unknown caller. 
+Some of these use lxml library, install following instruction on library site http://lxml.de/
+
+You can add files to integrate more functions, place it on this dir.
+
+Every reputation script can exit whit 0 or 1 value. 
+1 value indicate negative reputation found 
+0 value indicate positive or no negative reputation
+
+If one of plugins exit whit 1 value is automatically added on /etc/ncidd/ncidd.blacklist else no action is taken.
+
+If a caller is added on blacklist the hang is active from the next call.
+
+A simple and particular script....   
+
+    #!/usr/bin/python
+    import sys
+    print 1
+    sys.exit(1)
+
+useful to add every caller to blackilist after first call.
