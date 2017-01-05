@@ -1,0 +1,15 @@
+[Unit]
+Description=Ncidd call list web visualizer
+After=network.target auditd.service
+ConditionPathExists=/usr/ncidmon/
+
+[Service]
+#EnvironmentFile=-/etc/default/ssh
+ExecStart=/usr/bin/python /usr/ncidmon/ncidmon.py localhost:3333 --disable-notifications --listen -d --http 0.0.0.0:8080
+ExecReload=/bin/killall ncidmon.py
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+Alias=ncidmon.service
