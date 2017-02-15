@@ -1,0 +1,20 @@
+#Crowdsource db of incoming unwanted received calls, used to update /etc/ncid/ncidd.blacklist
+#Update your local blacklist file with (replace 0123456789 with then following numbers): 
+#sudo /usr/bin/ncidutil "/etc/ncid/ncidd.blacklist" Blacklist add "0123456789" "#Unwanted caller" 
+069525741
+0110448351
+0490990083
+0110142403
+0294751561
+0287368856
+0854308097
+0289731899
+051307459
+0289731857
+0883534782
+0237901369
+0694446803
+0689367965
+0287159919
+0102355481
+0289731901
