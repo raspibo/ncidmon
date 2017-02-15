@@ -16,6 +16,7 @@ CONFIG = {
     'NOTIFICATION_ICON'     : r'phone',        # name of icon in notification windows
     'NUMBER_LOOKUP_PAGES'   : (                # (name, url) tuples for number lookup
         # replace search number in lookup URL by '{number}'
+        (r'inelenco', r'http://www.inelenco.com/?dir=cerca&cerca={number}'),
         (r'tellows', r'https://www.tellows.it/num/{number}'),
         (r'it.unknownphone.com', r'http://it.unknownphone.com/search.php?num={number}'),
 	(r'chistachiamando.it',r'https://www.chistachiamando.it/numero-telefono/{number}'), 

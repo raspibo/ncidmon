@@ -12,6 +12,13 @@ from .webserver import CallListServer
 from .notifications import enable_notifcations
 from .misc import dprint, CONFIG
 
+from twisted.web.resource import Resource
+
+#class TestPage(Resource):
+#      isLeaf = True
+#      print "****************"
+#      def render_GET(self, request):
+#          return data
 
 def main():
     # command line processing
@@ -23,6 +30,8 @@ def main():
         call_list_server = CallListServer()
         site = http_server.Site(call_list_server)
         try:
+ #           root = Resource()
+ #           root.putChild('test', TestPage())
             reactor.listenTCP(
                 CONFIG['HTTP_PORT'], site, interface=CONFIG['HTTP_HOST'])
         except:

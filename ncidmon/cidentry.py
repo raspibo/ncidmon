@@ -51,10 +51,6 @@ class CIDEntry(object):
         
         number = self.get_number()
         if number:
-            if number.isdigit():
-                code, subscriber = _split_code_from_subscriber(number)
-                if code and subscriber:
-                    return code + ' / ' + _format_subscriber(subscriber)
             return number
         return 'Anonym'
     

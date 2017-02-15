@@ -185,11 +185,11 @@ class NCIDClient(LineReceiver):
                 print '(' + stars + ') ' + entry.get_pretty_summary()
                 print 'Caller reputation check for ' + entry.get_pretty_number() + 'run scripts: ' +  str(glob.glob("reputation/*.py"))
 		for reputation_script in glob.glob("reputation/*.py") :
-			reputation=subprocess.call(["python", reputation_script , entry.get_pretty_number()])
+			reputation=subprocess.call(["python", reputation_script , entry.get_number()])
 			print "Reputation out: " + str(reputation)
 			if int(reputation)==1 :
 				#subprocess.call("/usr/bin/ncidutil" , "/etc/ncid/ncidd.blacklist" , "Blacklist" ,"add" , entry.get_pretty_number() , "\#Auto update from reputation script")	
-				subprocess.call(["/home/pi/ncid_blacklist_add.sh" , entry.get_pretty_number() , "\#Auto update from reputation script"])	
+				subprocess.call(["/home/pi/ncid_blacklist_add.sh" , entry.get_number() , "\#Auto update from reputation script"])	
                 # notify incoming call
                 notify_current_incoming_call(entry)
                 
