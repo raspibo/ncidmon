@@ -1,0 +1,2 @@
+#Whitelist file is not shared. You can simply add friendly number to personal whitelist with:
+#sudo /usr/bin/ncidutil "/etc/ncid/ncidd.blacklist" Whitelist add "01234567890" "#Friend name"
