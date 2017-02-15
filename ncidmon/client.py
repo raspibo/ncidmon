@@ -189,7 +189,7 @@ class NCIDClient(LineReceiver):
 			print "Reputation out: " + str(reputation)
 			if int(reputation)==1 :
 				#subprocess.call("/usr/bin/ncidutil" , "/etc/ncid/ncidd.blacklist" , "Blacklist" ,"add" , entry.get_pretty_number() , "\#Auto update from reputation script")	
-				subprocess.call(["/home/pi/ncid_blacklist_add.sh" , entry.get_number() , "\#Auto update from reputation script"])	
+				subprocess.call(["./ncid_blacklist_add.sh" , entry.get_number() , "\#Auto update from reputation script"])	
                 # notify incoming call
                 notify_current_incoming_call(entry)
                 
